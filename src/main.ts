@@ -33,6 +33,7 @@ async function run(): Promise<void> {
 
     // Locate workflow by name as we need it's id
     const workflowFind = listResp.data.workflows.find((wf: Record<string, string>) => {
+      core.debug(`Looking for '${workflowName}' found '${wf['name']}'`)
       return wf['name'] === workflowName
     })
     if(!workflowFind) throw new Error(`Unable to find workflow named '${workflowName}' in ${repo} 😥`)
